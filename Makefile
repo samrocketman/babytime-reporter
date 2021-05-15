@@ -1,6 +1,6 @@
-.PHONY: run clean clean-all baby_tracker_data_import baby_time_data_import
+.PHONY: babytime_data_import baby_tracker_data_import clean clean-all example run
 
-run: baby_time_data_import
+run: babytime_data_import
 
 help:
 	@echo 'Run make with no arguments to process BabyTime metrics.'
@@ -8,24 +8,28 @@ help:
 	@echo '    make baby_tracker_data_import'
 	@echo '    make clean'
 	@echo '    make clean-all'
+	@echo '    make example'
 
 baby-tracker-data.json:
 	ls *.abt
 	cat *.abt | gunzip | jq '.records' > baby-tracker-data.json
 
-baby-time-data.json:
+babytime-data.json:
 	ls *.zip
 	if [ ! -f baby-time-data.json ]; then
 		unzip *.zip
 	fi
 	ls *.txt
-	./process_activity_txt.py *.txt > baby-time-data.json
+	./process_activity_txt.py *.txt > babytime-data.json
 
 baby_tracker_data_import: baby-tracker-data.json
 	docker run --network docker-compose-ha-consul-vault-ui_internal --dns 172.16.238.2 --dns 172.16.238.2 --rm -v "$(PWD):/mnt" telegraf telegraf --once -config /mnt/baby-tracker-telegraf.conf
 
-baby_time_data_import:
+babytime_data_import:
 	docker run --network docker-compose-ha-consul-vault-ui_internal --dns 172.16.238.2 --dns 172.16.238.2 --rm -v "$(PWD):/mnt" telegraf telegraf --once -config /mnt/baby-tracker-telegraf.conf
+
+example:
+	docker run --rm telegraf telegraf config > telegraf-example.conf
 
 clean:
 	rm *.json *.txt
