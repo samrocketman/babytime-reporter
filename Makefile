@@ -1,5 +1,7 @@
 .PHONY: babytime_data_import baby_tracker_data_import clean clean-all example run
 
+TZ := $(shell date +%Z)
+
 run: babytime_data_import
 
 help:
@@ -17,7 +19,7 @@ baby-tracker-data.json:
 babytime-data.json:
 	ls *.zip
 	if ! ls *.txt; then unzip *.zip; fi
-	./process_activity_txt.py *.txt > babytime-data.json
+	TZ=$(TZ) ./process_activity_txt.py *.txt > babytime-data.json
 
 baby_tracker_data_import: baby-tracker-data.json
 	docker run --network docker-compose-ha-consul-vault-ui_internal --dns 172.16.238.2 --dns 172.16.238.2 --rm -v "$(PWD):/mnt" telegraf telegraf --once -config /mnt/baby-tracker-telegraf.conf

@@ -10,6 +10,7 @@
 # metrics into a time series database for richer dashboards like Grafana.
 
 import json
+import os
 import re
 import sys
 
@@ -48,6 +49,8 @@ def process_record(record):
         metric['time'] = entries[0].split('~')[0].strip()
     else:
         metric['time'] = entries[0]
+    if os.getenv('TZ') is not None:
+        metric['time'] = ' '.join([metric['time'], os.getenv('TZ')])
     # data
     for (x, y) in map(entry_touple, entries[1:]):
         metric[x] = y
