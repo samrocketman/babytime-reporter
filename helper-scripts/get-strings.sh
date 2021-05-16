@@ -1,4 +1,6 @@
 #!/bin/bash
+# Created by Sam Gleske
+# MIT License
 
 # DESCRIPTION:
 #     I used this once to help me create JSON string entries for the

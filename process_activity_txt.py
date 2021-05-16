@@ -1,4 +1,13 @@
 #!/usr/bin/env python2.7
+# Created by Sam Gleske
+# MIT License
+# Pop!_OS 18.04 LTS
+# Linux 5.4.0-65-generic x86_64
+# Python 2.7.17
+
+# This is a simple Python script meant to read a BabyTime data export and
+# convert it into JSON Array time series data.  The end goal is to push these
+# metrics into a time series database for richer dashboards like Grafana.
 
 import json
 import re
