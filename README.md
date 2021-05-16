@@ -1,5 +1,10 @@
 # Get Richer Data from BabyTime
 
+Originally, this repository was going to be for Baby Tracker app.  However, it
+doesn't support data sync between parents.  So my wife and I decided to use the
+BabyTime app for data sync between us.  BabyTime has rich stats and metrics
+already so it doesn't _need_ a Grafana dashboard... but I wanted one.
+
 [BabyTime][1] is a newborn tracking app for breastfeeding, breast pumping, and
 feeding your baby from the breast, pumped milk, or formula.  This processes data
 and puts it into InfluxDB where richer reports can be generated using Grafana.
