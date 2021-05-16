@@ -16,17 +16,14 @@ baby-tracker-data.json:
 
 babytime-data.json:
 	ls *.zip
-	if [ ! -f baby-time-data.json ]; then
-		unzip *.zip
-	fi
-	ls *.txt
+	if ! ls *.txt; then unzip *.zip; fi
 	./process_activity_txt.py *.txt > babytime-data.json
 
 baby_tracker_data_import: baby-tracker-data.json
 	docker run --network docker-compose-ha-consul-vault-ui_internal --dns 172.16.238.2 --dns 172.16.238.2 --rm -v "$(PWD):/mnt" telegraf telegraf --once -config /mnt/baby-tracker-telegraf.conf
 
-babytime_data_import:
-	docker run --network docker-compose-ha-consul-vault-ui_internal --dns 172.16.238.2 --dns 172.16.238.2 --rm -v "$(PWD):/mnt" telegraf telegraf --once -config /mnt/baby-tracker-telegraf.conf
+babytime_data_import: babytime-data.json
+	docker run --network docker-compose-ha-consul-vault-ui_internal --dns 172.16.238.2 --dns 172.16.238.2 --rm -v "$(PWD):/mnt" telegraf telegraf --once -config /mnt/babytime-telegraf.conf
 
 example:
 	docker run --rm telegraf telegraf config > telegraf-example.conf
