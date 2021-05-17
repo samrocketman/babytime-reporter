@@ -34,4 +34,4 @@ clean:
 	rm *.json *.txt
 
 clean-all: clean
-	git clean -xfd
+	rm *.zip
