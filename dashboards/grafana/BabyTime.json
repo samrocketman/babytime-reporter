@@ -172,7 +172,7 @@
       "yaxes": [
         {
           "$$hashKey": "object:83",
-          "format": "short",
+          "format": "mlitre",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1321,5 +1321,5 @@
   "timezone": "",
   "title": "BabyTime Statistics",
   "uid": "s8nco9CGz",
-  "version": 3
+  "version": 5
 }
