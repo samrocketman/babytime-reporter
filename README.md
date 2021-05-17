@@ -123,8 +123,9 @@ Memo: Bottle Fed
 
 ---
 
-I converted the data in to JSON Array time series data which is ingested and
-published to InfluxDB.  Grafana is then used
+I converted the raw export data into JSON array time series data which is
+ingested and published to InfluxDB.  Grafana is then used to create a dashboard
+which answers questions our pediatrician or lactician asks about.
 
 <details><summary>BabyTime converted to JSON time series (Click to expand)</summary>
 
