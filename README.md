@@ -39,6 +39,9 @@ Provision the following projects in order:
 - [Chronograf][5]
 - [Grafana][6]
 
+Then, [configure your browser to browse the cluster web page][cluster-web] and
+visit the address `http://portal.service.consul/grafana/`.
+
 # Uploading stats to InfluxDB
 
 1. From the app, go to _BabyTime Settings_, _Export (Download)_, _Daily Record
@@ -57,6 +60,18 @@ the following command.
 `babytime-data.json` is the daily record converted into a time-series JSON
 array.  The JSON array is unsorted, but each JSON Object has a `time` key which
 notes at what time an `event` occurred.
+
+# Create the dashboard
+
+Log into Grafana by visiting `http://portal.service.consul/grafana/` with
+username `admin` and password `admin`.  It will prompt you to change the
+password.
+
+Import [the dashboard from this repository][dashboard-json].  If you've already
+published your BabyTime data, then you should see some graphed metrics which you
+can change the time period.
+
+Update the dashboard to your liking.
 
 # Screenshots
 
@@ -200,3 +215,5 @@ which answers questions our pediatrician or lactician asks about.
 [6]: https://github.com/samrocketman/consul-grafana
 [24h-view]: ./dashboards/grafana/24h-data-view.png
 [7d-view]: ./dashboards/grafana/7d-data-view.png
+[cluster-web]: https://github.com/samrocketman/docker-compose-ha-consul-vault-ui#configure-your-browser
+[dashboard-json]: ./dashboards/grafana/BabyTime.json
