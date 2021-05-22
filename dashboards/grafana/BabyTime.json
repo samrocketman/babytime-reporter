@@ -19,13 +19,616 @@
   "links": [],
   "panels": [
     {
-      "collapsed": false,
+      "collapsed": true,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 0
+      },
+      "id": 20,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "This will print out a table if you inspect the CSV data of this chart.  This gives a printout which can be used in doctor visits.",
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byRegexp",
+                  "options": ".*\\(min\\)$"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "m"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byRegexp",
+                  "options": ".*\\(mL\\)$"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "mlitre"
+                  }
+                ]
+              }
+            ]
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 1
+          },
+          "hiddenSeries": false,
+          "id": 22,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.6",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "Right Breast (min)",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "none"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "Breastfeeding",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "refId": "Right Breastfeed Count",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "feed_breast_right_min"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "distinct"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Left Breast (min)",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "none"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "Breastfeeding",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "refId": "Left Breastfeed Count",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "feed_breast_left_min"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "distinct"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Pumped Milk Fed (mL)",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "none"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "Feed Pumped Milk",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "refId": "Pumped Milk Fed",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "feed_pump_ml"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "distinct"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Formula Fed (mL)",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "none"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "Feed Formula",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "refId": "Formula Fed",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "feed_formula_ml"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "distinct"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Pumped Milk Spit Up",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "none"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "Feed Pumped Milk",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "refId": "Pumped Milk Spit Up",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "spit_up"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "count"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Formula Spit Up",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "none"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "Feed Formula",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "refId": "Formula Spit Up",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "spit_up"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "count"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Left Pump (min)",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "none"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "Pumping",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "refId": "Left Breast Pump Time",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "pump_left_breast_min"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Right Pump (min)",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "none"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "Pumping",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "refId": "Right Breast Pump Time",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "pump_right_breast_min"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Left Pump (mL)",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "none"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "Pumping",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "refId": "Left Breast Pump Volume",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "pump_left_breast_ml"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "distinct"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Right Pump (mL)",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "none"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "Pumping",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "refId": "Right Breast Pump Volume",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "pump_right_breast_ml"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "distinct"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Poop",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "none"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "Change Diaper",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "refId": "Poop",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "poop"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "count"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Pee",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "none"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "Change Diaper",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "refId": "Pee",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "pee"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "count"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Report on All Data",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "Spit Up",
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "Pumped Milk Spit Up",
+                    "Formula Spit Up"
+                  ],
+                  "reducer": "max"
+                }
+              }
+            }
+          ],
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:5975",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:5976",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "Reporting",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
       },
       "id": 10,
       "panels": [],
@@ -48,7 +651,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 1
+        "y": 2
       },
       "hiddenSeries": false,
       "id": 18,
@@ -78,6 +681,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "alias": "Forumula Sum",
           "groupBy": [
             {
               "params": [
@@ -114,6 +718,7 @@
           "tags": []
         },
         {
+          "alias": "Pumped Milk Sum",
           "groupBy": [
             {
               "params": [
@@ -210,7 +815,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 10
       },
       "hiddenSeries": false,
       "id": 16,
@@ -365,22 +970,51 @@
       "dashes": false,
       "datasource": null,
       "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+        "defaults": {
+          "unit": "mlitre"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Spit Up Events"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "short"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Formula"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "mlitre"
+              }
+            ]
+          }
+        ]
       },
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 6,
       "gridPos": {
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 17
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 12,
       "legend": {
+        "alignAsTable": false,
         "avg": false,
         "current": false,
+        "hideEmpty": false,
         "max": false,
         "min": false,
         "show": true,
@@ -391,14 +1025,46 @@
       "linewidth": 1,
       "nullPointMode": "connected",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": false
       },
       "percentage": false,
       "pluginVersion": "7.5.6",
       "pointradius": 2,
       "points": true,
       "renderer": "flot",
-      "seriesOverrides": [],
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:2616",
+          "alias": "Pumped Milk Spit Up Events",
+          "hiddenSeries": true,
+          "legend": false
+        },
+        {
+          "$$hashKey": "object:2641",
+          "alias": "Formula Spit Up Events",
+          "hiddenSeries": true,
+          "legend": false
+        },
+        {
+          "$$hashKey": "object:2808",
+          "alias": "Spit Up Events",
+          "lines": false,
+          "pointradius": 4,
+          "yaxis": 2
+        },
+        {
+          "$$hashKey": "object:5336",
+          "alias": "Formula",
+          "hiddenSeries": true,
+          "legend": false
+        },
+        {
+          "$$hashKey": "object:5353",
+          "alias": "Pumped Milk",
+          "hiddenSeries": true,
+          "legend": false
+        }
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
@@ -453,7 +1119,7 @@
             },
             {
               "params": [
-                "null"
+                "none"
               ],
               "type": "fill"
             }
@@ -481,7 +1147,7 @@
           "tags": []
         },
         {
-          "alias": "Spit Up Events",
+          "alias": "Formula Spit Up Events",
           "groupBy": [
             {
               "params": [
@@ -517,6 +1183,44 @@
             ]
           ],
           "tags": []
+        },
+        {
+          "alias": "Pumped Milk Spit Up Events",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "Feed Pumped Milk",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "spit_up"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "count"
+              }
+            ]
+          ],
+          "tags": []
         }
       ],
       "thresholds": [],
@@ -529,7 +1233,55 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "transformations": [],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Spit Up Events",
+            "binary": {
+              "left": "Formula Spit Up Events",
+              "operator": "+",
+              "reducer": "sum",
+              "right": "Pumped Milk Spit Up Events"
+            },
+            "mode": "reduceRow",
+            "reduce": {
+              "include": [
+                "Formula Spit Up Events",
+                "Pumped Milk Spit Up Events"
+              ],
+              "reducer": "max"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Formula Fed",
+            "mode": "reduceRow",
+            "reduce": {
+              "include": [
+                "Formula"
+              ],
+              "reducer": "max"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Pumped Milk Fed",
+            "mode": "reduceRow",
+            "reduce": {
+              "include": [
+                "Pumped Milk"
+              ],
+              "reducer": "max"
+            }
+          }
+        }
+      ],
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -550,11 +1302,12 @@
         },
         {
           "$$hashKey": "object:2116",
+          "decimals": 0,
           "format": "short",
-          "label": null,
+          "label": "Count",
           "logBase": 1,
-          "max": null,
-          "min": null,
+          "max": "1",
+          "min": "0",
           "show": true
         }
       ],
@@ -570,7 +1323,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 26
       },
       "id": 2,
       "panels": [],
@@ -591,10 +1344,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -605,7 +1354,7 @@
         "h": 3,
         "w": 8,
         "x": 0,
-        "y": 26
+        "y": 27
       },
       "id": 13,
       "options": {
@@ -826,7 +1575,7 @@
         "h": 6,
         "w": 4,
         "x": 8,
-        "y": 26
+        "y": 27
       },
       "id": 14,
       "options": {
@@ -1049,7 +1798,7 @@
         "h": 3,
         "w": 4,
         "x": 0,
-        "y": 29
+        "y": 30
       },
       "id": 7,
       "options": {
@@ -1193,7 +1942,7 @@
         "h": 3,
         "w": 4,
         "x": 4,
-        "y": 29
+        "y": 30
       },
       "id": 8,
       "options": {
@@ -1307,6 +2056,7 @@
       "type": "stat"
     }
   ],
+  "refresh": false,
   "schemaVersion": 27,
   "style": "dark",
   "tags": [],
@@ -1321,5 +2071,5 @@
   "timezone": "",
   "title": "BabyTime Statistics",
   "uid": "s8nco9CGz",
-  "version": 5
+  "version": 11
 }
