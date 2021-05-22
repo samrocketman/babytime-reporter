@@ -14,6 +14,13 @@ import os
 import re
 import sys
 
+def get_type(record):
+    entries = [line.strip() for line in record.split('\n')]
+    for entry in entries:
+        if entry.split(':')[0].strip() == "Type":
+            return entry.split(':')[1].strip()
+    raise Exception("There's a bug because this exception shouldn't be thrown.")
+
 def entry_touple(entry):
     legend = {
         "Type": "event",
@@ -82,6 +89,8 @@ def process_record(record):
             metric['purple_nipple'] = True
     return metric
 
+
+filter_records = ["Hospital", "Temperature"]
 with open(sys.argv[1], 'r') as f:
     doc = f.read()
 
@@ -89,7 +98,7 @@ re.split(r'===+', doc)
 #records = doc.split('='*20)
 records = re.split(r'===+', doc)
 records = [record.strip() for record in records]
-records = filter(lambda x: len(x) > 0, records)
+records = filter(lambda x: len(x) > 0 and get_type(x) not in filter_records, records)
 
 metrics = map(process_record, records)
 print(json.dumps(metrics, indent=4, separators=(',', ': '), sort_keys=True))
