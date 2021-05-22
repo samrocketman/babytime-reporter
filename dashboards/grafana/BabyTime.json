@@ -989,12 +989,12 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Formula"
+              "options": "Tongue Lift Exercise"
             },
             "properties": [
               {
                 "id": "unit",
-                "value": "mlitre"
+                "value": "short"
               }
             ]
           }
@@ -1069,6 +1069,13 @@
           "alias": "Random Spit Up Events",
           "hiddenSeries": true,
           "legend": false
+        },
+        {
+          "$$hashKey": "object:1247",
+          "alias": "Tongue Lift Exercise",
+          "lines": false,
+          "pointradius": 4,
+          "yaxis": 2
         }
       ],
       "spaceLength": 10,
@@ -1096,7 +1103,7 @@
           "policy": "autogen",
           "query": "SELECT spread(\"feed_formula_ml\") FROM \"autogen\".\"Feed Formula\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
           "rawQuery": false,
-          "refId": "A",
+          "refId": "Feed Formula Volume",
           "resultFormat": "time_series",
           "select": [
             [
@@ -1134,7 +1141,7 @@
           "measurement": "Feed Pumped Milk",
           "orderByTime": "ASC",
           "policy": "autogen",
-          "refId": "B",
+          "refId": "Feed Pumped Milk Volume",
           "resultFormat": "time_series",
           "select": [
             [
@@ -1172,7 +1179,7 @@
           "measurement": "Feed Formula",
           "orderByTime": "ASC",
           "policy": "autogen",
-          "refId": "C",
+          "refId": "Spit up formula",
           "resultFormat": "time_series",
           "select": [
             [
@@ -1210,7 +1217,7 @@
           "measurement": "Feed Pumped Milk",
           "orderByTime": "ASC",
           "policy": "autogen",
-          "refId": "D",
+          "refId": "Spit up pumped milk",
           "resultFormat": "time_series",
           "select": [
             [
@@ -1248,13 +1255,51 @@
           "measurement": "Etc",
           "orderByTime": "ASC",
           "policy": "autogen",
-          "refId": "E",
+          "refId": "Random spit up",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
                   "spit_up"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "count"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Tongue Lift Exercise",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "Etc",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "Tongue Lift Events",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "tongue_lift"
                 ],
                 "type": "field"
               },
@@ -2116,5 +2161,5 @@
   "timezone": "",
   "title": "BabyTime Statistics",
   "uid": "s8nco9CGz",
-  "version": 12
+  "version": 13
 }
