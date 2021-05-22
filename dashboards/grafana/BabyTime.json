@@ -1063,6 +1063,12 @@
           "alias": "Pumped Milk",
           "hiddenSeries": true,
           "legend": false
+        },
+        {
+          "$$hashKey": "object:294",
+          "alias": "Random Spit Up Events",
+          "hiddenSeries": true,
+          "legend": false
         }
       ],
       "spaceLength": 10,
@@ -1221,6 +1227,44 @@
             ]
           ],
           "tags": []
+        },
+        {
+          "alias": "Random Spit Up Events",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "Etc",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "spit_up"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "count"
+              }
+            ]
+          ],
+          "tags": []
         }
       ],
       "thresholds": [],
@@ -1248,7 +1292,8 @@
             "reduce": {
               "include": [
                 "Formula Spit Up Events",
-                "Pumped Milk Spit Up Events"
+                "Pumped Milk Spit Up Events",
+                "Random Spit Up Events"
               ],
               "reducer": "max"
             },
@@ -2071,5 +2116,5 @@
   "timezone": "",
   "title": "BabyTime Statistics",
   "uid": "s8nco9CGz",
-  "version": 11
+  "version": 12
 }
