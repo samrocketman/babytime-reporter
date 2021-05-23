@@ -16,6 +16,17 @@ _Formula_ feeding events:
 - Spit Up
 - Yellow Nipple
 
+The app also supports a generic `Etc` field which can contain custom baby
+events.  Since babies may have a tongue tie surgery, one must do `tongue
+lift` exercises on the baby's tongue.  The following custom `Etc` events are
+supported.
+
+- Spit Up
+- tongue lift
+
+Sometimes a baby might spit up far later than a feeding.  So it makes sense to
+track it with an Etc event in addition to bottle feeding.
+
 # Bottle Flow
 
 The purple and yellow bottle nipples control how much flow a baby consumes while
