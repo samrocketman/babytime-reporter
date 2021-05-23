@@ -1,6 +1,8 @@
 .PHONY: babytime_data_import clean clean-all example run
 
+ifndef TZ
 TZ := $(shell date +%Z)
+endif
 
 run: babytime_data_import
 

@@ -61,12 +61,20 @@ visit the address `http://portal.service.consul/grafana/`.
 3. Upload all data into InfluxDB by running the following command.
    ```bash
    make
+
+   # alternate command if you want to force a custom timezone
+   make TZ=UTC
    ```
 
 Alternately, if you only want to create the `babytime-data.json` file, then run
 the following command.
 
     make babytime-data.json
+
+Alternately, if you want to force the timezone to be something other than your
+system timezone, then run the following command.
+
+    make TZ=UTC babytime-data.json
 
 `babytime-data.json` is the daily record converted into a time-series JSON
 array.  The JSON array is unsorted, but each JSON Object has a `time` key which
