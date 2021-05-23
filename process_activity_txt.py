@@ -78,9 +78,9 @@ def process_record(record):
 
     # memo processing for richer data
     if 'etc_title' in metric:
-        if 'Spit Up' == metric['etc_title']:
+        if 'Spit Up' in metric['etc_title']:
             metric['spit_up'] = True
-        if 'tongue lift' == metric['etc_title']:
+        if 'tongue lift' in metric['etc_title']:
             metric['tongue_lift'] = True
     if 'notes' in metric:
         if 'Spit Up' in metric['notes']:
