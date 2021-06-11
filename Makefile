@@ -16,7 +16,7 @@ help:
 
 babytime-data.json:
 	ls *.zip
-	if ! ls *.txt; then unzip *.zip; fi
+	if ! ls *.txt; then for z in *.zip; do unzip "$$z";done ; fi
 	TZ=$(TZ) ./process_activity_txt.py *.txt > babytime-data.json
 
 babytime_data_import: babytime-data.json

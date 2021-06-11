@@ -93,8 +93,10 @@ def process_record(record):
 
 
 filter_records = ["Hospital", "Temperature"]
-with open(sys.argv[1], 'r') as f:
-    doc = f.read()
+doc = ""
+for i in range(1, len(sys.argv)):
+    with open(sys.argv[i], 'r') as f:
+        doc += f.read()
 
 re.split(r'===+', doc)
 #records = doc.split('='*20)
